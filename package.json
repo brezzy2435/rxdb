@@ -1,7 +1,7 @@
 {
   "name": "rxdb",
   "description": "A local-first realtime NoSQL Database for JavaScript applications - https://rxdb.info/",
-  "version": "16.7.0",
+  "version": "16.8.0",
   "author": "pubkey",
   "repository": {
     "type": "git",
@@ -134,6 +134,12 @@
       "require": "./dist/cjs/plugins/storage-dexie/index.js",
       "import": "./dist/esm/plugins/storage-dexie/index.js",
       "default": "./dist/esm/plugins/storage-dexie/index.js"
+    },
+    "./plugins/storage-sqlite": {
+      "types": "./dist/types/plugins/storage-sqlite/index.d.ts",
+      "require": "./dist/cjs/plugins/storage-sqlite/index.js",
+      "import": "./dist/esm/plugins/storage-sqlite/index.js",
+      "default": "./dist/esm/plugins/storage-sqlite/index.js"
     },
     "./plugins/electron": {
       "types": "./dist/types/plugins/electron/index.d.ts",
@@ -354,6 +360,7 @@
     "test:node": "npm run test:node:dexie",
     "test:node:memory": "npm run transpile && cross-env DEFAULT_STORAGE=memory mocha --expose-gc --config ./config/.mocharc.cjs ./test_tmp/unit.test.js",
     "test:node:memory-random-delay": "npm run transpile && cross-env DEFAULT_STORAGE=memory-random-delay mocha --expose-gc --config ./config/.mocharc.cjs ./test_tmp/unit.test.js",
+    "test:node:sqlite-trial": "npm run transpile && cross-env DEFAULT_STORAGE=sqlite-trial mocha --expose-gc --config ./config/.mocharc.cjs ./test_tmp/unit.test.js",
     "test:node:dexie": "npm run transpile && cross-env DEFAULT_STORAGE=dexie mocha --expose-gc --config ./config/.mocharc.cjs ./test_tmp/unit.test.js",
     "test:bun:dexie": "npm run transpile && cross-env DEFAULT_STORAGE=dexie NODE_ENV=fast bun run ./node_modules/mocha/bin/mocha test_tmp/unit.test.js --bail --timeout 60000",
     "test:bun:memory": "npm run transpile && cross-env DEFAULT_STORAGE=memory NODE_ENV=fast bun run ./node_modules/mocha/bin/mocha test_tmp/unit.test.js --bail --timeout 60000",
@@ -498,7 +505,7 @@
     "@firebase/rules-unit-testing": "4.0.1",
     "@rollup/plugin-commonjs": "28.0.2",
     "@rollup/plugin-node-resolve": "16.0.0",
-    "@stylistic/eslint-plugin": "4.1.0",
+    "@stylistic/eslint-plugin": "4.2.0",
     "@types/assert": "1.5.11",
     "@types/core-js": "2.5.8",
     "@types/cors": "2.8.17",
@@ -584,5 +591,6 @@
   "overrides": {
     "eslint": "9.21.0",
     "webpack-dev-server": "5.2.0"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
